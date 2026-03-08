@@ -9,7 +9,7 @@
 	中島大河
 }
 
-\meetingdate{2026年3月2日} % ミーティングの日付を設定
+\meetingdate{2026年3月9日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -20,76 +20,26 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-論文執筆環境の作成
+{\LaTeX}の学習とESP32の開発環境構築
 
-\section{今週やったこと}
-VSCode及びDockerを用いて{\LaTeX}の論文執筆環境を構築した。
+\section{今週やったこと1}
+ArduinoIDEのインストールと、XIAO ESP32-S3用データの導入を行った。
 
-\subsection{やったことその一}
-\label{sec:done1}
-\url{https://zenn.dev/being/articles/how-to-use-my-latex}を参照し、必要なソフトのインストールを行った。\\github上で、templateからRepositoryを作成し、ローカルにCloneした。(Fig1参照)
-
-\begin{comment}
-\subsection{やったことその二}
-次に，△△について述べる．
-
-以下，\Fig{fig:fig1}にサンプルの図を示す．
-また，\Table{tab:sample}にサンプルの表を示す．
-さらに，\Eq{eq:label}にサンプルの数式を示す．
-
-節についての専用のコマンドは用意していないが，\ref{sec:done1}節のように参照できる．
-単位のある数字を記述するときは，\texttt{siunitx}パッケージを利用して，\qty{10}{\milli \meter}のように書くと良い．
-\end{comment}
+\subsection{今週やったこと2}
+単純なプログラムとしてGPIOを用いたLチカを行った。
 
 % 図の挿入
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{figures/1_First_Try.jpg}
-    \caption{Repository \cite{ref: } \cite{ref: }}
-    \label{fig:fig1}
+    \includegraphics[width=\linewidth]{figures/3_Lチカ.jpg}
+    \caption{Repository}
+    \label{fig:GPIOLチカ}
 \end{figure}
-
-\subsection{}
-\label{sec:done1-2}
-また、VSCodeとDockerコンテナーを接続し、ローカルの執筆環境を利用できるようにした。(Fig2参照)\\現在は、main.texにexampleのweekly.texの内容を上書きする形で執筆を行っている。
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\linewidth]{figures/2_VSCode.jpg}
-    \caption{VSCode \cite{ref: } \cite{ref: }}
-    \label{fig:fig2}
-\end{figure}
-
-
-\begin{comment}
-\begin{table}[htbp]
-    \centering
-    \caption{Sample Table}
-    \begin{tabular}{|c|c|c|}
-        \hline
-        1 & 2 & 3 \\
-        \hline
-        4 & 5 & 6 \\
-        \hline
-        7 & 8 & 9 \\
-        \hline
-    \end{tabular}
-    \label{tab:sample}
-\end{table}
-
-\begin{equation}
-    \left( \int_{0}^\infty \frac{\sin x}{\sqrt {x}} dx \right)^{2}
-    = \sum_{k = 0}^\infty \frac{(2k)!}{2^{2k}(k!)^{2}} \frac{1}{2k + 1}
-    = \prod_{k = 1}^\infty \frac{4k^{2}}{4k^{2} - 1} = \frac{\pi}{2}
-    \label{eq:label}
-\end{equation}
-\end{comment}
 
 \section{まとめ}
-今週は{\LaTeX}の執筆環境の構築を行った。
+ESP32の開発環境を構築した。
 
 \section{来週やること}
-{\LaTeX}の構文の学習とGithubの操作の習得を行う
+デバッグ用として、OLEDディスプレイであるSSD1306の互換品を購入したので、データを表示できるようにする。
 
 \end{document}
