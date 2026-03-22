@@ -1,6 +1,7 @@
 \documentclass{classes/weekly_report}
 \usepackage{comment}
 \usepackage{url}
+\usepackage{listings}
 
 \title{
 	進捗報告
@@ -10,94 +11,69 @@
 	中島大河
 }
 
-\meetingdate{2026年3月15日} % ミーティングの日付を設定
+\meetingdate{2026年3月23日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
-\begin{document} 
+\begin{document}
 \maketitle
 \thispagestyle{preport}
 
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-{\LaTeX}の学習とESP32の開発環境構築
+ギアボックスの改修,モータードライバの配線,ディスプレイ+BLEの実験
 
-\section{今週やったこと1}
-各種電子部品の選定:\\
-ライントレーサの動力として130モータを選択した。手元にあり、試作・検証等を行いやすいことが理由である。
-また、モータードライバとしてDRV8835、ラインの検出用フォトリフレクタとしてLBR-127HLDを選定した。\\
-
-
-\subsection{今週やったこと2}
-動力ユニットの設計:\\
-Fusion360を用いて減速比1:4のギアボックスの設計を行った。(fig.\ref{fig:gearbox})
-\\
-また、
+\section{今週やったこと1:ギアボックスの改修}
+Fig.\ref{fig:gearbox2}に示すように1:12の減速比となるようにギアボックスの改修を行った.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/ギアボックス設計1.png}
+    \includegraphics[width=\linewidth]{figures/ギアボックス設計2.png}
     \caption{ギアボックスの設計}
-    \label{fig:gearbox}
+    \label{fig:gearbox2}
 \end{figure}
 
-\subsection{今週やったこと3}
-ピンの決定:\\
-xiao esp32s3のピン配列(fig.\ref{fig:esp32_pin})よりどのように接続するかを決定した。\\\\
+\subsection{今週やったこと2:モータドライバカバーと車体の設計}
+Fig.\ref{fig:cover},Fig.\ref{fig:cover_real}に示すように，モータドライバカバーの設計とモーターとの配線を行った.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/esp32s3のピン配置.png}
-    \caption{xiao esp32s3のピン配列 \cite{xiao} \small\textcolor[gray]{0.5}{//[1]としたかったが、なぜかCitationがundefinedになる}}
-    \label{fig:esp32_pin}
+    \includegraphics[width=\linewidth]{figures/モータードライバカバー.png}
+    \caption{モータードライバカバーの設計}
+    \label{fig:cover}
 \end{figure}
-
-1:フォトリフレクタのため、アナログ入力が3,4必要\\
-2:モータドライバDRV8835はIN/INモードにおいて、1モータにつきPWMが2つ必要であり、PWM出力が4必要[2]\\
-3:OLEDディスプレイSSD1306とのI2C通信のため、GPIO5/SDA,GPIO6/SCLを利用\\
-4:USBによる書き込み等のため、GPIO43/TX,GPIO44/RXが使えない\\
-5:GPIO3はストラップピン(JTAG信号ソース)であり、LOWにしてはいけない{\small-PWM出力専用であれば、10kΩでプルアップする事で問題なく使用可能}\\\\
-
-よって、(fig.\ref{fig:esp32_pin_setteigo})のように設定した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/esp32s3のピン配置_設定後.png}
-    \caption{ピンの設定}
-    \label{fig:esp32_pin_setteigo}
+    \includegraphics[width=\linewidth]{figures/配線.jpg}
+    \caption{モータードライバの配線}
+    \label{fig:cover_real}
 \end{figure}
 
-\subsection{今週やったこと4}
-SSD1306のテスト:\\
-しばらく、接続してもディスプレイが動作しない状態であったが、SSD1306とピンヘッダをはんだ付けする事で、漸くサンプルプログラムを動作させることが出来た。(fig.\ref{fig:ssd1306})\\
-また、esp32を横からピンヘッダに押し付けないと動作しないため、配線の接触不良が原因であることが分かった。
+
+\subsection{今週やったこと3:SSD1306とBLEのテスト}
+Listing.\ref{program},Fig.\ref{fig:SSD1306_BLE}に示すように，BLE通信により値をリアルタイムに変更できるようにした．
+
+\lstinputlisting[caption = ソースコード,label = program]{figures/SSD1306とBLE.txt}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/SSD1306の光.JPG}
-    \caption{adafruit公式デモの動作}
-    \label{fig:ssd1306}
+    \includegraphics[width=\linewidth]{figures/SD1306+BLE.jpg}
+    \caption{BLEによる値の変更}
+    \label{fig:SSD1306_BLE}
 \end{figure}
-
-
 
 \section{まとめ}
-今回は主にハード系の設計、仕様設定を行った。\\
-しかし、SSD1306の動作にてこずりarduinoのC/C++,Pythonの学習を進めることが出来なかった。
+今回はギア比の変更と，配線，SSD1306+BLEのテストを行った．
 
 \section{来週やること}
-LaTeXでの参照文献の参照がLaTeX: Citation 'XX' on page X undefined.となるのを修正\\
-C/C++,Pythonの学習\\
-センサー配置の設計\\
+\begin{enumerate}
+    \item センサー,電源,基板を含めた設計
+    \item プログラムの設計
+    \item python+Bleak(BLEライブラリ)によるコントローラプログラムの作成
+\end{enumerate}
 
-%参照文献
-\begin{thebibliography}{9}
-\bibitem{xiao} 「Seeed Studio XIAO ESP32S3 シリーズ入門」,Seeed,\url{https://wiki.seeedstudio.com/ja/xiao_esp32s3_getting_started/}
-\bibitem{DRV8853} 「DRV8835使用ステッピング\&DCモータードライバーモジュール」 ,秋月電子通商.\url{https://akizukidenshi.com/catalog/g/g109848/}
-\bibitem{DRV8853} 「フォトリフレクター(反射型フォトセンサー) LBR-127HLD」 ,秋月電子通商.\url{https://akizukidenshi.com/catalog/g/g104500/}
-
-\end{thebibliography}
 
 \end{document}
 

@@ -1,0 +1,101 @@
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <BLEDevice.h>
+#include <BLEServer.h>
+#include <BLEUtils.h>
+#include <BLE2902.h>
+
+//----ディスプレイ関連----//
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define OLED_RESET -1       // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+#define OLED_SCL 6
+#define OLED_SDA 5
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET, 400000UL, 100000UL);
+
+
+char Rand_ascii(){
+   return char(random(33,126));
+}
+void print_with_effect(String drawstring,Adafruit_SSD1306 *display){
+  String original = String(drawstring);//オリジナルの文字列
+
+  for(int i = drawstring.length()+1;i >= 0;i--){//最後尾の文字から
+    for(int j = 0;j <= 8;j++){
+      for(int k = 0;k <= i;k++){
+        if(drawstring.charAt(k) != '\n'){
+          drawstring.setCharAt(k,Rand_ascii());
+          }
+      }
+    }
+    drawstring.setCharAt(i,original.charAt(i));
+
+    display->clearDisplay();
+    display->display();
+    display->setTextSize(1);
+    display->setTextColor(SSD1306_WHITE);
+    display->setCursor(0, 0);
+    display->print(drawstring);
+    display->display();
+  }
+}
+
+//----BLE関連----/
+//BLEのUUID
+#define SERVICE_UUID "2716401e-a30b-4144-a00c-ad594ef2ba06"
+#define CHARACTERISTIC_UUID "2f58bdfe-a88a-424c-80fa-8907cb901994"
+BLECharacteristic *pCharacteristic;
+
+//コールバッククラス    
+class MyCallbacks : public BLECharacteristicCallbacks {
+  //値が書き込まれたら、ディスプレイに表示
+  void onWrite(BLECharacteristic *pCharacteristic) override {
+    String value = pCharacteristic->getValue().c_str();
+    display.clearDisplay();
+    print_with_effect("VALUE:" + value,&display);
+  }
+  
+};
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  //ディスプレイの設定
+  Wire.begin(OLED_SDA, OLED_SCL);
+  display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS, false, false);
+
+
+  BLEDevice::init("ESP32_DISPLAY"); // デバイス名を設定
+  BLEServer *pServer = BLEDevice::createServer();
+
+  // サービスを作成
+  BLEService *pService = pServer->createService(SERVICE_UUID);
+
+  // キャラクタリスティックを作成
+  pCharacteristic = pService->createCharacteristic(
+                      CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_READ |
+                      BLECharacteristic::PROPERTY_WRITE
+                    );
+
+  // キャラクタリスティックに初期値を設定
+  pCharacteristic->setValue("Waiting for command...");
+  pCharacteristic->setCallbacks(new MyCallbacks());
+
+  // サービスを開始
+  pService->start();
+
+  // BLE広告を開始
+  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+  pAdvertising->start();
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
