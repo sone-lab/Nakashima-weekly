@@ -1,7 +1,6 @@
 \documentclass{classes/weekly_report}
 \usepackage{comment}
 \usepackage{url}
-\usepackage{listings}
 
 \title{
 	進捗報告
@@ -11,7 +10,7 @@
 	中島大河
 }
 
-\meetingdate{2026年3月23日} % ミーティングの日付を設定
+\meetingdate{2026年3月30日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,56 +21,61 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-ギアボックスの改修,モータードライバの配線,ディスプレイ+BLEの実験
+回路設計,筐体設計,配線
 
-\section{今週やったこと1:ギアボックスの改修}
-Fig.\ref{fig:gearbox2}に示すように1:12の減速比となるようにギアボックスの改修を行った.
+\section{今週やったこと1:回路設計}
+Fig.\ref{fig:sch}に示すように全体の回路設計を行った.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/ギアボックス設計2.png}
-    \caption{ギアボックスの設計}
-    \label{fig:gearbox2}
+    \includegraphics[width=\linewidth]{figures/ライントレーサ―回路.pdf}
+    \caption{回路設計}
+    \label{fig:sch}
 \end{figure}
 
-\subsection{今週やったこと2:モータドライバカバーと車体の設計}
-Fig.\ref{fig:cover},Fig.\ref{fig:cover_real}に示すように，モータドライバカバーの設計とモーターとの配線を行った.
+\subsection{今週やったこと2:筐体設計}
+Fig.\ref{fig:cover},Fig.\ref{fig:cover_real}に示すように，センサー部分の設計と筐体の設計を行った.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/モータードライバカバー.png}
-    \caption{モータードライバカバーの設計}
+    \includegraphics[width=\linewidth]{figures/車体設計2.png}
+    \caption{筐体の設計}
     \label{fig:cover}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/配線.jpg}
-    \caption{モータードライバの配線}
+    \includegraphics[width=\linewidth]{figures/車体設計2-2.JPG}
+    \caption{筐体}
     \label{fig:cover_real}
 \end{figure}
 
 
-\subsection{今週やったこと3:SSD1306とBLEのテスト}
-Listing.\ref{program},Fig.\ref{fig:SSD1306_BLE}に示すように，BLE通信により値をリアルタイムに変更できるようにした．
+\subsection{今週やったこと3:センサのテスト}
+Fig.\ref{fig:sense1},Fig.\ref{fig:sense1}に示すように，フォトリフレクタの値を読み取るテストを行った．
 
-\lstinputlisting[caption = ソースコード,label = program]{figures/SSD1306とBLE.txt}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/SD1306+BLE.jpg}
-    \caption{BLEによる値の変更}
+    \includegraphics[width=\linewidth]{figures/センサ1.JPG}
+    \caption{フォトリフレクタを隠さない状態}
+    \label{fig:SSD1306_BLE}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/センサ2.JPG}
+    \caption{フォトリフレクタを紙で隠した状態}
     \label{fig:SSD1306_BLE}
 \end{figure}
 
 \section{まとめ}
-今回はギア比の変更と，配線，SSD1306+BLEのテストを行った．
+今回は回路設計,筐体設計と配線を行った．
 
-\section{来週やること}
+\section{今後やること}
 \begin{enumerate}
-    \item センサー,電源,基板を含めた設計
+    \item 配線の続き
     \item プログラムの設計
-    \item python+Bleak(BLEライブラリ)によるコントローラプログラムの作成
 \end{enumerate}
 
 
