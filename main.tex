@@ -10,7 +10,7 @@
 	中島大河
 }
 
-\meetingdate{2026年3月30日} % ミーティングの日付を設定
+\meetingdate{2026年4月06日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -24,57 +24,33 @@
 回路設計,筐体設計,配線
 
 \section{今週やったこと1:回路設計}
-Fig.\ref{fig:sch}に示すように全体の回路設計を行った.
+\Fig{fig:PCB1}に示すようにセンサー部分のみの回路設計を行った.しかし、部品を事前に決定した位置に合わせることが出来なかった。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/ライントレーサ―回路.pdf}
-    \caption{回路設計}
-    \label{fig:sch}
+    \includegraphics[width=\linewidth]{figures/センサーPCB1.png}
+    \caption{センサー回路設計}
+    \label{fig:PCB1}
 \end{figure}
 
-\subsection{今週やったこと2:筐体設計}
-Fig.\ref{fig:cover},Fig.\ref{fig:cover_real}に示すように，センサー部分の設計と筐体の設計を行った.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/車体設計2.png}
-    \caption{筐体の設計}
-    \label{fig:cover}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/車体設計2-2.JPG}
-    \caption{筐体}
-    \label{fig:cover_real}
-\end{figure}
-
-
-\subsection{今週やったこと3:センサのテスト}
-Fig.\ref{fig:sense1},Fig.\ref{fig:sense1}に示すように，フォトリフレクタの値を読み取るテストを行った．
+\Fig{fig:PCB2}の様に、事前に設計した部品の位置にPCB上でも部品を配置する方法が不明であるため、思った通りに配置することが出来なかった。
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/センサ1.JPG}
-    \caption{フォトリフレクタを隠さない状態}
-    \label{fig:SSD1306_BLE}
+    \includegraphics[width=\linewidth]{figures/位置合わせが出来ない.png}
+    \caption{事前に設計した位置に部品を配置することが出来ない}
+    \label{fig:PCB2}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/センサ2.JPG}
-    \caption{フォトリフレクタを紙で隠した状態}
-    \label{fig:SSD1306_BLE}
-\end{figure}
+
 
 \section{まとめ}
-今回は回路設計,筐体設計と配線を行った．
+今回はセンサー部分の回路設計を行った．
 
-\section{今後やること}
+\section{来週やること}
 \begin{enumerate}
-    \item 配線の続き
+    \item 回路設計の続き
     \item プログラムの設計
 \end{enumerate}
 
