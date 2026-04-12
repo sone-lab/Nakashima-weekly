@@ -1,6 +1,7 @@
 \documentclass{classes/weekly_report}
 \usepackage{comment}
 \usepackage{url}
+\usepackage{minted}
 
 \title{
 	進捗報告
@@ -21,37 +22,41 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-回路設計,筐体設計,配線
+PCB設計,プログラミング
 
-\section{今週やったこと1:回路設計}
-\Fig{fig:PCB1}に示すようにセンサー部分のみの回路設計を行った.しかし、部品を事前に決定した位置に合わせることが出来なかった。
+\section{今週やったこと1:PCB設計}
+\Fig{fig:PCB1}に示すようにセンサー部分のPCB設計を改善した。3DPCBであれば、筐体設計と同様の操作で主要部品の配置を行うことが出来た。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/センサーPCB1.png}
-    \caption{センサー回路設計}
+    \includegraphics[width=\linewidth]{figures/PCB改善1.png}
+    \caption{センサーPCB設計}
     \label{fig:PCB1}
 \end{figure}
 
-\Fig{fig:PCB2}の様に、事前に設計した部品の位置にPCB上でも部品を配置する方法が不明であるため、思った通りに配置することが出来なかった。
+原点位置を基準に配置を行うことにより、\Fig{fig:PCB2}の様にセンサーを配置することが出来た。
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/位置合わせが出来ない.png}
-    \caption{事前に設計した位置に部品を配置することが出来ない}
+    \includegraphics[width=\linewidth]{figures/PCB改善2.png}
+    \caption{3DPCBでの位置決め}
     \label{fig:PCB2}
 \end{figure}
 
+\section{今週やったこと1:モーター制御クラスの設計}
+モーター制御専用のクラスを設計した。
 
+
+\inputminted[breaklines]{c}{figures/モータークラス.txt}
 
 \section{まとめ}
-今回はセンサー部分の回路設計を行った．
+今回はセンサー部分のPCB設計とプログラミングを行った．
 
 \section{来週やること}
 \begin{enumerate}
     \item 回路設計の続き
-    \item プログラムの設計
+    \item プログラムの続き
 \end{enumerate}
 
 

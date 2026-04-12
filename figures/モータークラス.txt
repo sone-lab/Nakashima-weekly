@@ -1,0 +1,109 @@
+enum class MotorSide{
+  Left,
+  Right
+};
+
+enum class MotorMode{
+  Forward,
+  Reverse,
+  Coast,
+  Brake
+};
+
+class Motor{
+  public:
+    virtual void SetOffset(MotorSide Side,float Value) = 0;
+    virtual void SetMultiplier(MotorSide Side,float Value) = 0;
+    virtual void SetSpeed(MotorSide Side,MotorMode Mode,float Speed/*0.0~1.0*/) = 0;
+    virtual void Drive(float LeftSpeed/*-1.0~1.0*/,float RightSpeed/*-1.0~1.0*/,bool Brake = 0) = 0;
+    virtual ~Motor() = default;
+};
+
+class MotorDRV8835 final : public Motor{
+  public:
+    MotorDRV8835(){
+        pinMode(LeftMotorPin[0], OUTPUT);
+        pinMode(LeftMotorPin[1], OUTPUT);
+        pinMode(RightMotorPin[0], OUTPUT);
+        pinMode(RightMotorPin[1], OUTPUT);     
+    }
+
+    void SetOffset(MotorSide Side,float value) override{
+      if(Side == MotorSide::Left)LeftOffset = value;
+      else if(Side == MotorSide::Right)RightOffset = value;
+    }
+
+    void SetMultiplier(MotorSide Side,float value) override{
+      if(Side == MotorSide::Left)LeftMultiplier = value;
+      else if(Side == MotorSide::Right)RightMultiplier = value;
+    }
+
+    void SetSpeed(MotorSide Side,MotorMode Mode,float Speed) override{
+      int (&MotorPin)[2] = (Side == MotorSide::Left) ? LeftMotorPin : RightMotorPin;
+      float Offset = (Side == MotorSide::Left) ? LeftOffset : RightOffset;
+      float Multiplier = (Side == MotorSide::Left) ? LeftMultiplier : RightMultiplier;
+      int pwm = constrain((Speed + Offset)*Multiplier*255,0,255);
+
+      switch(Mode){
+        case MotorMode::Forward:
+          analogWrite(MotorPin[0],pwm);
+          analogWrite(MotorPin[1],0);
+          break;
+
+        case MotorMode::Reverse:
+          analogWrite(MotorPin[0],0);
+          analogWrite(MotorPin[1],pwm);
+          break;
+
+        case MotorMode::Coast:
+          analogWrite(MotorPin[0],0);
+          analogWrite(MotorPin[1],0);
+          break;
+
+        case MotorMode::Brake:
+          analogWrite(MotorPin[0],255);
+          analogWrite(MotorPin[1],255);
+          break;
+
+        default:
+          analogWrite(MotorPin[0],0);
+          analogWrite(MotorPin[1],0);  
+          break;       
+      }
+    }
+
+    void Drive(float LeftSpeed,float RightSpeed,bool Brake = 0) override{
+      if(Brake == true){
+        SetSpeed(MotorSide::Left,MotorMode::Brake,0);
+        SetSpeed(MotorSide::Right,MotorMode::Brake,0);
+      }
+      else if(LeftSpeed ==0.0 && RightSpeed == 0.0){
+        SetSpeed(MotorSide::Left,MotorMode::Coast,0);
+        SetSpeed(MotorSide::Right,MotorMode::Coast,0);
+      }
+      else{
+        SetSpeed(MotorSide::Left,(LeftSpeed > 0.0) ? MotorMode::Forward : MotorMode::Reverse,abs(LeftSpeed));
+        SetSpeed(MotorSide::Right,(RightSpeed > 0.0) ? MotorMode::Forward : MotorMode::Reverse,abs(RightSpeed));
+      }
+    }
+  
+  private:
+    int LeftMotorPin[2] ={0,1};
+    int RightMotorPin[2] = {2,3};
+    float LeftOffset = 0.0;
+    float RightOffset = 0.0;
+    float LeftMultiplier = 1.0;
+    float RightMultiplier = 1.0;
+};
+
+MotorDRV8835 MotorObj;
+
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
