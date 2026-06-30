@@ -11,7 +11,7 @@
 	中島大河
 }
 
-\meetingdate{2026年4月06日} % ミーティングの日付を設定
+\meetingdate{2026年6月31日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,41 +22,36 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-PCB設計,プログラミング
+真値と推定値の差を比較する機能を実装する。
 
-\section{今週やったこと1:PCB設計}
-\Fig{fig:PCB1}に示すようにセンサー部分のPCB設計を改善した。3DPCBであれば、筐体設計と同様の操作で主要部品の配置を行うことが出来た。
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/PCB改善1.png}
-    \caption{センサーPCB設計}
-    \label{fig:PCB1}
-\end{figure}
-
-原点位置を基準に配置を行うことにより、\Fig{fig:PCB2}の様にセンサーを配置することが出来た。
-
+\section{今週やったこと1:カメラシミュレートと誤差比較}
+\Fig{fig:csv}に示すように単一画像から、カメラをシミュレートする動画と、その経路の真値をCSVとして吐き出すプログラムを作成した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/PCB改善2.png}
-    \caption{3DPCBでの位置決め}
-    \label{fig:PCB2}
+    \includegraphics[width=\linewidth]{figures/csv.png}
+    \caption{カメラシミュレート}
+    \label{fig:csv}
 \end{figure}
 
-\section{今週やったこと1:モーター制御クラスの設計}
-モーター制御専用のクラスを設計した。
+また、\Fig{fig:誤差比較}の様に真値と推定値の誤差やユークリッド距離を計算し、CSVとして吐き出す機能を実装した。
 
 
-\inputminted[breaklines]{c}{figures/モータークラス.txt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/誤差比較.png}
+    \caption{誤差比較}
+    \label{fig:誤差比較}
+\end{figure}
 
 \section{まとめ}
-今回はセンサー部分のPCB設計とプログラミングを行った．
+今週は誤差比較のための機能を実装した。
 
 \section{来週やること}
 \begin{enumerate}
-    \item 回路設計の続き
-    \item プログラムの続き
+    \item 画像フィルタの実装
+    \item 処理時間の計測機能の実装
+    \item ステップサイズに基づいたフレームの間引き処理
 \end{enumerate}
 
 
