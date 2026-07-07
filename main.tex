@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	真値と推定値の差を比較する機能の実装
+	コードのリファクタリングとCNCの選定
 }
 
 \author{
 	中島大河
 }
-
-\meetingdate{2026年6月31日} % ミーティングの日付を設定
+    
+\meetingdate{2026年7月8日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,36 +22,36 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-真値と推定値の差を比較する機能を実装する。
+コードのリファクタリングとCNCの選定
 
-\section{今週やったこと1:カメラシミュレートと誤差比較}
-\Fig{fig:csv}に示すように単一画像から、カメラをシミュレートする動画と、その経路の真値をCSVとして吐き出すプログラムを作成した。
+\section{今週やったこと1:コードリファクタリング}
+\Fig{fig:ref}に示すようにコードを分かりやすくするため、dataclassを用いてリファクタリングを行った。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/csv.png}
-    \caption{カメラシミュレート}
-    \label{fig:csv}
+    \includegraphics[width=\linewidth]{figures/ref.png}
+    \caption{リファクタリング}
+    \label{fig:ref}
 \end{figure}
 
-また、\Fig{fig:誤差比較}の様に真値と推定値の誤差やユークリッド距離を計算し、CSVとして吐き出す機能を実装した。
 
+\section{今週やったこと2:実験機器として用いるCNCの選定}
+正確な移動と真値の取得のために\Fig{fig:CNC}に示す作業領域300x180x45mmのCNCを実験機器として用いることにした。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/誤差比較.png}
-    \caption{誤差比較}
-    \label{fig:誤差比較}
+    \includegraphics[width=\linewidth]{figures/CNC.png}
+    \caption{CNCの選定}
+    \label{fig:CNC}
 \end{figure}
 
 \section{まとめ}
-今週は誤差比較のための機能を実装した。
+今週はコードの整理とCNCの選定を行った。
 
 \section{来週やること}
 \begin{enumerate}
-    \item 画像フィルタの実装
+    \item 比較データのグラフ化
     \item 処理時間の計測機能の実装
-    \item ステップサイズに基づいたフレームの間引き処理
 \end{enumerate}
 
 
