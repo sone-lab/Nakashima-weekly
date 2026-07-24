@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	コードのリファクタリングとCNCの選定
+	コードのリファクタリングとLEDカメラ治具の設計
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年7月8日} % ミーティングの日付を設定
+\meetingdate{2026年7月15日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,31 +22,31 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-コードのリファクタリングとCNCの選定
+コードのリファクタリングとLEDカメラ治具の設計
 
 \section{今週やったこと1:コードリファクタリング}
-\Fig{fig:ref}に示すようにコードを分かりやすくするため、dataclassを用いてリファクタリングを行った。
+\Fig{fig:ref}に示すようにコードを分かりやすくするため、pydanticを用いてリファクタリングを行った。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/ref.png}
+    \includegraphics[width=\linewidth]{figures/pydantic1.png}
     \caption{リファクタリング}
     \label{fig:ref}
 \end{figure}
 
 
-\section{今週やったこと2:実験機器として用いるCNCの選定}
-正確な移動と真値の取得のために\Fig{fig:CNC}に示す作業領域300x180x45mmのCNCを実験機器として用いることにした。
+\section{今週やったこと2:LEDカメラ治具の設計}
+LEDが届いたため、\Fig{fig:LEDカメラ治具}に示すLEDとカメラを固定する治具を設計した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/CNC.png}
-    \caption{CNCの選定}
-    \label{fig:CNC}
+    \includegraphics[width=\linewidth]{figures/LEDカメラ治具.png}
+    \caption{LEDカメラ治具}
+    \label{fig:LEDカメラ治具}
 \end{figure}
 
 \section{まとめ}
-今週はコードの整理とCNCの選定を行った。
+今週はコードの整理と治具の設計。
 
 \section{来週やること}
 \begin{enumerate}
