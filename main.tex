@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	コードのリファクタリングとLEDカメラ治具の設計
+	コードの軽微な修正とPSR(Peak-to-sidelobe-Ratio)の計算
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年7月15日} % ミーティングの日付を設定
+\meetingdate{2026年8月19日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,36 +22,29 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-コードのリファクタリングとLEDカメラ治具の設計
+コードの軽微な修正とPSR(Peak-to-sidelobe-Ratio)の計算
 
-\section{今週やったこと1:コードリファクタリング}
-\Fig{fig:ref}に示すようにコードを分かりやすくするため、pydanticを用いてリファクタリングを行った。
+\section{今週やったこと1:コードの整理とPSRの計算}
+\Fig{fig:ref}に示すように位相相関の信頼性を評価する事を目的として、PSR(Peak-to-sidelobe-Ratio)を計算した。
+PSRは、ピーク値と全体の標準偏差の比であり、これが高いほどピークが鋭く信頼性が高いとみなすことが出来る。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/pydantic1.png}
-    \caption{リファクタリング}
+    \includegraphics[width=\linewidth]{figures/PSR.png}
+    \caption{PSRの計算コード}
     \label{fig:ref}
 \end{figure}
 
+また、各種クラス変数となっていた変数の定義をinit内に移動した。
 
-\section{今週やったこと2:LEDカメラ治具の設計}
-LEDが届いたため、\Fig{fig:LEDカメラ治具}に示すLEDとカメラを固定する治具を設計した。
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/LEDカメラ治具.png}
-    \caption{LEDカメラ治具}
-    \label{fig:LEDカメラ治具}
-\end{figure}
 
 \section{まとめ}
-今週はコードの整理と治具の設計。
+今週はコードの整理とPSRの計算を行った。
 
 \section{来週やること}
 \begin{enumerate}
     \item 比較データのグラフ化
-    \item 処理時間の計測機能の実装
+    \item CNC実機を用いた治具の設計
 \end{enumerate}
 
 
