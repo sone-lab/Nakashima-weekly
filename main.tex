@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	コードの軽微な修正とPSR(Peak-to-sidelobe-Ratio)の計算
+	CNCの組み立てとカメラ取付部品の設計
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年8月19日} % ミーティングの日付を設定
+\meetingdate{2026年8月26日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,29 +22,39 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-コードの軽微な修正とPSR(Peak-to-sidelobe-Ratio)の計算
+CNCの組み立てとカメラ取付部品の設計
 
-\section{今週やったこと1:コードの整理とPSRの計算}
-\Fig{fig:ref}に示すように位相相関の信頼性を評価する事を目的として、PSR(Peak-to-sidelobe-Ratio)を計算した。
-PSRは、ピーク値と全体の標準偏差の比であり、これが高いほどピークが鋭く信頼性が高いとみなすことが出来る。
+\section{今週やったこと1:CNCの組み立て}
+\Fig{fig:CNC_assembly}に示すように、到着したCNCの組み立てを行った。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/PSR.png}
-    \caption{PSRの計算コード}
-    \label{fig:ref}
+    \includegraphics[width=\linewidth]{figures/CNC_assembly.png}
+    \caption{CNCの組み立て}
+    \label{fig:CNC_assembly}
 \end{figure}
 
-また、各種クラス変数となっていた変数の定義をinit内に移動した。
+\section{今週やったこと2:カメラ取付部品の設計}
+\Fig{fig:CameraMount}に示すように、CNCにカメラと照明を取り付ける部品の設計を行った。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/CameraMount.png}
+    \caption{カメラ取付部品}
+    \label{fig:CameraMount}
+\end{figure}
+
+
 
 
 \section{まとめ}
-今週はコードの整理とPSRの計算を行った。
+今週はCNCの組み立てとカメラ取付部品の設計を行った。
 
 \section{来週やること}
 \begin{enumerate}
-    \item 比較データのグラフ化
-    \item CNC実機を用いた治具の設計
+    \item シリアル通信によるCNCの制御プログラムの作成
+    \item データのグラフ化機能の追加
+    \item カメラ取付部品の印刷
 \end{enumerate}
 
 
