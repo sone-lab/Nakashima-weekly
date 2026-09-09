@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	カメラ取付部品の作成と軌跡生成プログラムの作成
+	CNC関連部品の選定
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年9月2日} % ミーティングの日付を設定
+\meetingdate{2026年9月9日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,39 +22,39 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-カメラ取付部品の作成と軌跡生成プログラムの作成
+電源、リミットスイッチ等のCNC関連部品の選定
 
-\section{今週やったこと1:カメラ取付部品の作成}
-\Fig{fig:CameraMount}に示すように、CNCにカメラと照明を取り付ける部品の作成を行った。
+\section{今週やったこと1:スイッチの選定}
+\Fig{fig:switch}に示す、停止スイッチとリミットスイッチの選定を行った。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/cameramount.png}
-    \caption{カメラ取付部品}
-    \label{fig:CameraMount}
+    \includegraphics[width=\linewidth]{figures/switch.png}
+    \caption{停止スイッチとリミットスイッチ}
+    \label{fig:switch}
 \end{figure}
 
-\section{今週やったこと2:軌跡生成プログラムの作成}
-\Fig{fig:Trajectory}に示すように、CNCの軌跡を生成するプログラムの作成を行った。
+\section{今週やったこと2:12V電源の選定}
+24Vが出力されるスピンドル端子によって、定格12VのLEDを発光させるため、
+\Fig{fig:PowerSupply}に示すように、CNC用の12V電源の選定を行った。
+1軸あたりの消費電力がおおむね3W程度と判明したため、60Wの電源を選定した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/Trajectory.png}
-    \caption{CNCの軌跡生成}
-    \label{fig:Trajectory}
+    \includegraphics[width=\linewidth]{figures/PowerSupply.png}
+    \caption{CNC用12V電源}
+    \label{fig:PowerSupply}
 \end{figure}
 
 
 
 
 \section{まとめ}
-今週はカメラ取付部品の作成と軌跡生成プログラムの作成を行った。
+今週はスイッチと12V電源の選定を行った。
 
 \section{来週やること}
 \begin{enumerate}
-    \item 購入部品の選定
     \item CNC用プログラムの作成
-    \item カメラマウントの取り付け
 \end{enumerate}
 
 
