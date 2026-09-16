@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	CNC関連部品の選定
+	gcode生成プログラムの作成
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年9月9日} % ミーティングの日付を設定
+\meetingdate{2026年9月16日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,39 +22,26 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-電源、リミットスイッチ等のCNC関連部品の選定
+CNCに送信するgcodeの生成を行う
 
 \section{今週やったこと1:スイッチの選定}
-\Fig{fig:switch}に示す、停止スイッチとリミットスイッチの選定を行った。
+\Fig{fig:gcode}に示す、三つの円を直線で結んだような軌跡のgcode生成のプログラムを作成した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/switch.png}
-    \caption{停止スイッチとリミットスイッチ}
-    \label{fig:switch}
+    \includegraphics[width=\linewidth]{figures/trajection_gcode.png}
+    \caption{生成されたgcodeの軌跡}
+    \label{fig:gcode}
 \end{figure}
-
-\section{今週やったこと2:12V電源の選定}
-24Vが出力されるスピンドル端子によって、定格12VのLEDを発光させるため、
-\Fig{fig:PowerSupply}に示すように、CNC用の12V電源の選定を行った。
-1軸あたりの消費電力がおおむね3W程度と判明したため、60Wの電源を選定した。
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{figures/PowerSupply.png}
-    \caption{CNC用12V電源}
-    \label{fig:PowerSupply}
-\end{figure}
-
 
 
 
 \section{まとめ}
-今週はスイッチと12V電源の選定を行った。
+今週はgcode生成プログラムの作成を行った。
 
 \section{来週やること}
 \begin{enumerate}
-    \item CNC用プログラムの作成
+    \item gcode送信、?コマンドによる真値取得プログラムの作成。
 \end{enumerate}
 
 
