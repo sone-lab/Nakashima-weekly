@@ -4,14 +4,14 @@
 \usepackage{minted}
 
 \title{
-	gcode生成プログラムの作成
+	CNCリミットスイッチの取り付け治具設計
 }
 
 \author{
 	中島大河
 }
     
-\meetingdate{2026年9月16日} % ミーティングの日付を設定
+\meetingdate{2026年10月2日} % ミーティングの日付を設定
 
 % -------------------------ここから-------------------------
 
@@ -22,22 +22,31 @@
 % -------------------------ここまで触らない-------------------------
 
 \section{目的}
-CNCに送信するgcodeの生成を行う
+CNCにリミットスイッチを取り付けるための治具を設計する。
 
-\section{今週やったこと1:スイッチの選定}
-\Fig{fig:gcode}に示す、三つの円を直線で結んだような軌跡のgcode生成のプログラムを作成した。
+\section{今週やったこと1:CNCガントリーのCADへの取り込み}
+\Fig{fig:gantry}に示す、CNCガントリーのCADデータを作成した。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{figures/trajection_gcode.png}
-    \caption{生成されたgcodeの軌跡}
-    \label{fig:gcode}
+    \includegraphics[width=\linewidth]{figures/gantry.png}
+    \caption{CNCガントリーのCADデータ}
+    \label{fig:gantry}
+\end{figure}
+
+\section{今週やったこと2:Y軸リミットスイッチ取り付け治具の設計}
+\Fig{fig:limit_switch}に示す、Y軸リミットスイッチを取り付けるための治具のCADデータを作成した。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/limit_switch.png}
+    \caption{Y軸リミットスイッチ取り付け治具のCADデータ}
+    \label{fig:limit_switch}
 \end{figure}
 
 
-
 \section{まとめ}
-今週はgcode生成プログラムの作成を行った。
+今週はCNCリミットスイッチの取り付け治具の設計を行った。
 
 \section{来週やること}
 \begin{enumerate}
